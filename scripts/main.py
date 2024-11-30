@@ -5,7 +5,7 @@ def start_game():
     pygame.init()
     
     # Settings
-    screen = pygame.display.set_mode((800, 600))
+    screen = pygame.display.set_mode((800, 800))
     pygame.display.set_caption("My VN Game")
     clock = pygame.time.Clock()
     

@@ -7,6 +7,9 @@ def start_game():
     pygame.init()
     
     # Settings
+    # Load your custom icon image
+    icon = pygame.image.load('assets/icon/icon.png')
+    pygame.display.set_icon(icon)
     screen = pygame.display.set_mode((1200, 800))
     pygame.display.set_caption("Sekiranun")
     clock = pygame.time.Clock()

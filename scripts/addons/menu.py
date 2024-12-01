@@ -1,8 +1,17 @@
- # menu.py
 import pygame
 
 def run_menu(screen):
     """Displays the menu screen."""
+    # Initialize Pygame mixer for sound
+    pygame.mixer.init()
+
+    # Load the music
+    music_path = "assets/audio/music/rexincognito.mp3"
+    pygame.mixer.music.load(music_path)
+
+    # Start playing the music and set it to loop infinitely
+    pygame.mixer.music.play(loops=-1, start=0.0)  # Loops indefinitely
+
     # Initialize font and colors
     custom_font = "assets/fonts/sg.ttf"
     font = pygame.font.Font(custom_font, 72)  # Large font for title
@@ -21,6 +30,7 @@ def run_menu(screen):
         # Event handling
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
+                pygame.mixer.music.stop()  # Stop the music when exiting
                 return False  # Exit the game
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_UP:
@@ -29,8 +39,12 @@ def run_menu(screen):
                     selected_option = (selected_option + 1) % len(menu_options)
                 elif event.key == pygame.K_RETURN:
                     if menu_options[selected_option] == "Start Game":
+                        pygame.mixer.music.fadeout(2000)  # Fade out the music over 1 second
+                        pygame.time.wait(2000)  # Wait for the fadeout to finish
                         return True  # Proceed to the game
                     elif menu_options[selected_option] == "Exit":
+                        pygame.mixer.music.fadeout(2000)  # Fade out the music over 1 second
+                        pygame.time.wait(2000)  # Wait for the fadeout to finish
                         return False  # Exit the game
         
         # Draw the menu

@@ -1,0 +1,13 @@
+Everywhere:
+esc: to bring up exit page
+    left-arrow: move to the left choice
+    right-arrow: move to the right choice
+    return/enter: choose the choice
+
+main menu:
+return: start game
+up-arrow: move up on choices
+down-arrow: move down on choices
+
+intro:
+return/space: skip to next dialogue

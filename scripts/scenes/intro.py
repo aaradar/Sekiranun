@@ -65,7 +65,7 @@ def run_intro(screen):
             if event.type == pygame.QUIT:
                 running = False
             elif event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_SPACE:  # Check if the spacebar is pressed
+                if event.key == pygame.K_SPACE or event.key == pygame.K_a:  # Check if the spacebar is pressed
                     dialogue_index += 1
                     if dialogue_index >= len(dialogues):
                         running = False  # Exit the loop when dialogues are over

@@ -10,4 +10,4 @@ up-arrow: move up on choices
 down-arrow: move down on choices
 
 intro:
-return/space: skip to next dialogue
+a/space: skip to next dialogue

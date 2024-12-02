@@ -20,8 +20,8 @@ def run_intro(screen):
     custom_font_path = "assets/fonts/sg.ttf"
     font = pygame.font.Font(custom_font_path, 24)  # Use custom font with size 24
 
-    character_file = "assets/characters/moomsekiranun/concept1.png"
-    character = Character(character_file, scale_factor=0.5)
+    character_file = "assets/characters/moomsekiranun/concept2.png"
+    character = Character(character_file, scale_factor=0.7)
 
     # Example dialogues
     dialogues = [
@@ -70,7 +70,7 @@ def run_intro(screen):
         if dialogue_index >= len(dialogues):
             running = False # Exit the loop when dialogues are over
 
-        display_background(screen, "assets/backgrounds/testb.png")
+        display_background(screen, "assets/backgrounds/apartmentlobby.png")
 
         character.displayCenter(screen)
 

@@ -21,7 +21,7 @@ def run_intro(screen):
     font = pygame.font.Font(custom_font_path, 24)  # Use custom font with size 24
 
     character_file = "assets/characters/moomsekiranun/concept2.png"
-    character = Character(character_file, scale_factor=0.7)
+    character = Character(character_file, scale_factor=0.5)
 
     # Example dialogues
     dialogues = [

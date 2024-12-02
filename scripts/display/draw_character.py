@@ -35,6 +35,6 @@ class Character:
         :param screen: The pygame screen to display the character on.
         """
         character_x = (screen.get_width() - self.character.get_width()) // 2
-        character_y = (screen.get_height() - self.character.get_height()) // 2
+        character_y = (screen.get_height() - self.character.get_height()) // 2 +65
         screen.blit(self.character, (character_x, character_y))
 

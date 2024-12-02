@@ -1,7 +1,7 @@
 import pygame
 from scripts.addons.menu import run_menu
-from scripts.addons.exit_screen import show_exit_dialog
 from scripts.scenes.intro import run_intro
+from scripts.scenes.chapter1 import chapter1
 
 def start_game():
     pygame.init()
@@ -14,31 +14,27 @@ def start_game():
     pygame.display.set_caption("Sekiranun")
     clock = pygame.time.Clock()
 
-    # Run menu screen
-    if not run_menu(screen):
-        pygame.quit()
-        return
 
-    # Run intro scene after menu
-    run_intro(screen)
-
-    # Main game loop
     running = True
     while running:
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                running = False
-            elif event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
-                # Show exit dialog when ESC is pressed
-                if show_exit_dialog(screen):
-                    running = False
+        # Run menu screen
+        menuSelection = run_menu(screen)    
 
-        # Example placeholder for game content
-        screen.fill((0, 0, 50))  # Placeholder background color
+        # Run intro scene after menu
+        if menuSelection == 1:
+            running = False
+        elif menuSelection == 0:
+            run_intro(screen)
 
-        pygame.display.flip()
-        clock.tick(60)
-    
+            chapter1(screen)
+        
+
+
+        
+        
+        
+
+
     pygame.quit()
 
 if __name__ == "__main__":

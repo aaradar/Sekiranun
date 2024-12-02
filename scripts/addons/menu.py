@@ -22,8 +22,9 @@ def run_menu(screen):
     background_color = (0, 0, 0)
 
     # Menu options
-    menu_options = ["Start Game", "Exit"]
+    menu_options = ["Start Game", "Load", "Settings", "Exit"]
     selected_option = 0  # Tracks which option is highlighted
+
 
     running = True
     while running:
@@ -41,11 +42,11 @@ def run_menu(screen):
                     if menu_options[selected_option] == "Start Game":
                         pygame.mixer.music.fadeout(2000)  # Fade out the music over 1 second
                         pygame.time.wait(2000)  # Wait for the fadeout to finish
-                        return True  # Proceed to the game
+                        return 0 # Proceed to the game
+                    #elif menu_options[selected_option] == "Load":   
+                    #elif menu_options[selected_option] == "Settings":             
                     elif menu_options[selected_option] == "Exit":
-                        pygame.mixer.music.fadeout(2000)  # Fade out the music over 1 second
-                        pygame.time.wait(2000)  # Wait for the fadeout to finish
-                        return False  # Exit the game
+                        return 1
         
         # Draw the menu
         screen.fill(background_color)

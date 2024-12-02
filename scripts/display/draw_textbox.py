@@ -22,6 +22,18 @@ class DrawTextBox:
 
     def display(self):
         """Renders the text box, character name, and dialogue onto the screen."""
+        # Wrap text to fit within the width of the text box
+        if self.dialogue_index < len(self.dialogues):
+            dialogue_text = self.dialogues[self.dialogue_index]
+            wrapped_text = self.wrap_text(dialogue_text, self.font, self.text_box_width - 150)  # 40 is for padding
+
+            # Calculate the total height required for the dialogue text
+            text_line_height = self.font.get_linesize()
+            total_text_height = len(wrapped_text) * text_line_height + 20  # 20 for padding
+
+            # Adjust text box height dynamically based on text content
+            self.text_box_height = max(150, total_text_height + 40)  # Minimum height is 150, 40 for padding
+
         # Create a surface for the black box
         text_box_surface = pygame.Surface((self.text_box_width, self.text_box_height))
         text_box_surface.fill((0, 0, 0))  # Black background
@@ -43,17 +55,12 @@ class DrawTextBox:
         self.screen.blit(name_text, (name_x, name_y))
 
         # Render and display dialogue text
-        if self.dialogue_index < len(self.dialogues):
-            dialogue_text = self.dialogues[self.dialogue_index]
-            # Wrap text to fit within the width of the text box
-            wrapped_text = self.wrap_text(dialogue_text, self.font, self.text_box_width - 40)  # 40 is for padding
-            dialogue_y = name_y + name_text.get_height() + 20  # Space between name and dialogue text
+        dialogue_y = name_y + name_text.get_height() + 20  # Space between name and dialogue text
 
-            # Draw each line of wrapped text with indentation
-            for line in wrapped_text:
-                line_text = self.font.render(f"    {line}", True, (255, 255, 255))  # Indentation for dialogue
-                self.screen.blit(line_text, (name_x, dialogue_y))
-                dialogue_y += line_text.get_height() + 5  # Add some space between lines
+        for line in wrapped_text:
+            line_text = self.font.render(f"    {line}", True, (255, 255, 255))  # Indentation for dialogue
+            self.screen.blit(line_text, (name_x, dialogue_y))
+            dialogue_y += line_text.get_height() + 5  # Add some space between lines
 
     @staticmethod
     def wrap_text(text, font, max_width):
